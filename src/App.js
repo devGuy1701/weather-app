@@ -7,7 +7,7 @@ import HourlyWeatherList from './HourlyWeatherList'
 import DailyWeatherList from './DailyWeatherList'
 import OtherWeatherInfo from './OtherWeatherInfo'
 
-const API_KEY = process.env.API
+const API_KEY = process.env.REACT_APP_ID
 const BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 const URL = "https://api.openweathermap.org/data/2.5/onecall"
 
