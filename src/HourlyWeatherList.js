@@ -9,7 +9,6 @@ const cmpStyle = {
 }
 
 const HourlyWeatherList = ({weather}) => {
-  console.log(weather);
   return (
     <>
       <h4>Nelle prossime ore</h4>
