@@ -19,7 +19,8 @@ const HourlyWeather = ({w}) => {
 
     useEffect(() => {
         let theDate = new Date(w.dt * 1000);
-        setHour(`${theDate.getHours() - 1}`)
+        console.log(theDate);
+        setHour(`${theDate.getHours()}`)
         setBg(w.weather[0]?.icon)
     }, [w])
     return (

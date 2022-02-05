@@ -5,24 +5,30 @@ const OtherWeatherInfo = ({weather, tz}) => {
   const [setHour, setSetHour] = useState('')
 
   useEffect(() => {
-    let dr = new Date((weather.sunrise) * 1000)
-    let ds = new Date((weather.sunset) * 1000)
-    let dt = new Date(weather.dt * 1000)
+    let sRise = 'Dato non presente'
+    let sSet = 'Dato non presente'
+    if(weather.sunrise && weather.sunset) {
+      let dr = new Date((weather.sunrise) * 1000)
+      let ds = new Date((weather.sunset) * 1000)
+      let dt = new Date(weather.dt * 1000)
 
-  const convertTime = (unixTime, offset) => {
-    let dt = new Date((unixTime + offset) * 1000)
-    let h = dt.getHours() - 1
-    let m = "0" + dt.getMinutes()
-    let t = h + ":" + m.substr(-2)
-    return t
-  }
-  
-  let sRise = convertTime(weather.sunrise, tz)
-  let sSet = convertTime(weather.sunset, tz)
+      const convertTime = (unixTime, offset) => {
+        let dt = new Date((unixTime + offset) * 1000)
+        let h = dt.getHours() - 1
+        let m = "0" + dt.getMinutes()
+        let t = h + ":" + m.slice(-2)
+        return t
+      }
+
+      sRise = convertTime(weather.sunrise, tz)
+      sSet = convertTime(weather.sunset, tz)
+    }
+    
     
     setRiseHour(`${sRise}`)
     setSetHour(`${sSet}`)
   }, [weather, tz])
+
   return (
     <div>
         <div style={{display: 'flex', justifyContent: 'space-around'}}>
