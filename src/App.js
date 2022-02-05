@@ -20,6 +20,8 @@ function App() {
   const [daily, setDaily] = useState([])
   const [hourly, setHourly] = useState([])
 
+  const [tz, setTz] = useState('')
+
   const [errorCurrent, setErrorCurrent] = useState(false)
 
   const [search, setSearch] = useState(false)
@@ -49,6 +51,7 @@ function App() {
     .then(result => {
       setName(city)
       setCurrent(result.current)
+      setTz(result.timezone_offset)
       setDaily(result.daily)
       setHourly(result.hourly)
       setSearch(true)
@@ -84,7 +87,7 @@ function App() {
           {errorCurrent ?  ''
             : search ? <DailyWeatherList weather={daily}/> : ''}
           {errorCurrent ?  ''
-            : search ? <OtherWeatherInfo weather={current}/> : ''}
+            : search ? <OtherWeatherInfo weather={current} tz={tz}/> : ''}
         </div>
       </div>
     </div>

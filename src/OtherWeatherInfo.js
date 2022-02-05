@@ -1,16 +1,28 @@
 import React, { useState, useEffect} from 'react';
 
-const OtherWeatherInfo = ({weather}) => {
+const OtherWeatherInfo = ({weather, tz}) => {
   const [riseHour, setRiseHour] = useState('')
   const [setHour, setSetHour] = useState('')
 
   useEffect(() => {
-    let dr = new Date(weather.sunrise * 1000)
-    let ds = new Date(weather.sunset * 1000)
+    let dr = new Date((weather.sunrise) * 1000)
+    let ds = new Date((weather.sunset) * 1000)
+    let dt = new Date(weather.dt * 1000)
+
+  const convertTime = (unixTime, offset) => {
+    let dt = new Date((unixTime + offset) * 1000)
+    let h = dt.getHours() - 1
+    let m = "0" + dt.getMinutes()
+    let t = h + ":" + m.substr(-2)
+    return t
+  }
+  
+  let sRise = convertTime(weather.sunrise, tz)
+  let sSet = convertTime(weather.sunset, tz)
     
-    setRiseHour(`${dr.getHours()}:${dr.getMinutes()}`)
-    setSetHour(`${ds.getHours()}:${ds.getMinutes()}`)
-  }, [weather])
+    setRiseHour(`${sRise}`)
+    setSetHour(`${sSet}`)
+  }, [weather, tz])
   return (
     <div>
         <div style={{display: 'flex', justifyContent: 'space-around'}}>
