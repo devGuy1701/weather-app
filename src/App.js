@@ -47,15 +47,15 @@ function App() {
     const coord = await handleSearchByName()
     if(!coord?.lat) return console.log('Errore');
     fetch(`${URL}?lat=${coord.lat}&lon=${coord.lon}&appid=${API_KEY}&units=metric&lang=it`)
-    .then(res => res.json())
-    .then(result => {
-      setName(city)
-      setCurrent(result.current)
-      setTz(result.timezone_offset)
-      setDaily(result.daily)
-      setHourly(result.hourly)
-      setSearch(true)
-    })
+      .then(res => res.json())
+      .then(result => {
+        setName(city)
+        setCurrent(result.current)
+        setTz(result.timezone_offset)
+        setDaily(result.daily.slice(1))
+        setHourly(result.hourly)
+        setSearch(true)
+      })
   }
   
   return (

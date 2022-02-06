@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ImageBox from './ImageBox';
 
 const cmpStyle = {
-    'display': 'flex',
-    'flexDirection': 'row',
-    'justifyContent': 'space-around',
-    'alignItems': 'center'
 }
 
 const DailyWeather = ({w}) => {
@@ -31,17 +27,18 @@ const DailyWeather = ({w}) => {
         setTemp(Math.round(t / 4))
 
     }, [w])
+
     return (
-        <div style={cmpStyle}>
-            <p style={{fontWeight: 'bold'}}>{day}</p>
-            <ImageBox stl={{width: 60}} icon={w.weather[0]?.icon} />
-            <p>{temp}°</p>
-            <p>{(w.pop * 100).toFixed()}%</p>
-            <p>{w.temp.max}°</p>
-            <p>{w.temp.min}°</p>
-            <p>{w.uvi}</p>
+        <tr style={cmpStyle}>
+            <td style={{fontWeight: 'bold'}}>{day}</td>
+            <td><ImageBox stl={{width: 60}} icon={w.weather[0]?.icon} /></td>
+            <td>{temp}°</td>
+            <td>{(w.pop * 100).toFixed()}%</td>
+            <td>{w.temp.max}°</td>
+            <td>{w.temp.min}°</td>
+            <td>{w.uvi}</td>
             
-        </div>
+        </tr>
     );
 };
 

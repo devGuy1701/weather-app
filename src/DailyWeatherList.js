@@ -3,20 +3,29 @@ import React from 'react';
 import DailyWeather from './DailyWeather'
 
 const cmpStyle = {
-    'display' : 'flex',
-    'flexDirection': 'column',
-    'padding': '6px'
+  'width': '100%'
 }
 
 const DailyWeatherList = ({weather}) => {
   return (
     <>
         <h4>Nei prossimi giorni</h4>
-        <div style={cmpStyle}>
+        <table style={cmpStyle}>
+          <tbody>
+            <tr>
+              <th>Giorno</th>
+              <th></th>
+              <th>Percepita</th>
+              <th>Pioggia</th>
+              <th>Massima</th>
+              <th>Minima</th>
+              <th>Uvi</th>
+            </tr>
             {weather.map((w, i) => (
                 <DailyWeather w={w} key={i}/>
             ))}
-        </div>
+          </tbody>
+        </table>
     </>
     
   );
