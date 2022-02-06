@@ -36,7 +36,7 @@ const DailyWeather = ({w}) => {
             <p style={{fontWeight: 'bold'}}>{day}</p>
             <ImageBox stl={{width: 60}} icon={w.weather[0]?.icon} />
             <p>{temp}°</p>
-            <p>{parseInt(w.pop) * 100}%</p>
+            <p>{(w.pop * 100).toFixed()}%</p>
             <p>{w.temp.max}°</p>
             <p>{w.temp.min}°</p>
             <p>{w.uvi}</p>
