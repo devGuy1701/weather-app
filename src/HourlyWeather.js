@@ -28,7 +28,7 @@ const HourlyWeather = ({w}) => {
             <ImageBox icon={bg} stl={stl}/>
             <p style={{margin: 2, fontWeight: 'bold', textTransform: 'capitalize'}}>{w.weather[0]?.description}</p>
             <p style={{margin: 0}}>{Math.round(w.temp)}°</p>
-            <p>{w.pop * 100}%</p>
+            <p>{parseInt(w.pop) * 100}%</p>
         </div>
     );
 };
